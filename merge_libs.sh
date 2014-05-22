@@ -28,6 +28,6 @@ echo "$LIB_CREATE"
 ar -r $LIB_NAME $LIB_CREATE
 
 #Clean obj file
-rm -rf *.o  __.SYMDEF\ SORTED  __.SYMDEF
+rm -rf *.o  *SYMDEF*
 
 echo "****** Ok, Merge complete ******"

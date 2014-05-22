@@ -11,23 +11,23 @@
 #Create library name.
 LIB_NAME="lib.a"
 
-LIBS=`find *.a`
-
-#Get *.o file
-for LIB in $LIBS; do
+#Get obj file
+for LIB in *.a; do
 	ar -x $LIB
 done
 
-OBJS=`find *.o`
+LIB_CREATE=""
 
-echo "******Create $LIB_NAME******"
-
-#Create new *.a
-for OBJ in $OBJS; do
-	ar -r $LIB_NAME $OBJ
+for OBJ in *.o; do
+	LIB_CREATE="$LIB_CREATE $OBJ "
 done
 
+echo "$LIB_CREATE"
+
+#Create new library
+ar -r $LIB_NAME $LIB_CREATE
+
 #Clean obj file
-rm -rf *.o  __.SYMDEF\ SORTED
+rm -rf *.o  __.SYMDEF\ SORTED  __.SYMDEF
 
 echo "****** Ok, Merge complete ******"
